@@ -3,7 +3,22 @@
 # and commit this file to your remote git repository to share the goodness with others.
 
 tasks:
-  - init: nvm install v14.19.3 && npm rebuild --verbose sharp && curl https://install.meteor.com/?release=$( curl -so- https://raw.githubusercontent.com/RocketChat/Rocket.Chat/develop/apps/meteor/.meteor/release | cut -d@ -f2 ) | sh && yarn install && yarn run build
-    command: yarn run dev
+  - name: Install NPM Version
+    command: nvm install v14.19.3
+  - name: Install meteor
+    command: curl https://install.meteor.com/?release=$( curl -so- https://raw.githubusercontent.com/RocketChat/Rocket.Chat/develop/apps/meteor/.meteor/release | cut -d@ -f2 ) | sh
 
+github:
+  prebuilds:
+    master: true
+    branches: true
+    pullRequests: true
+    pullRequestsFromForks: true
+    addCheck: false
+    addComment: false
+    addBadge: true
 
+vscode:
+  extensions:
+    - esbenp.prettier-vscode
+    - eslint

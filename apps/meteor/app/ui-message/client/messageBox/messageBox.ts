@@ -126,12 +126,6 @@ Template.messageBox.onCreated(function (this: MessageBoxTemplateInstance) {
 			input.focus();
 		});
 	};
-
-	const { chatMessagesInstance } = this.data;
-
-	chatMessagesInstance.quotedMessages.subscribe(() => {
-		this.replyMessageData.set(chatMessagesInstance.quotedMessages.get());
-	});
 });
 
 Template.messageBox.onRendered(function (this: MessageBoxTemplateInstance) {
@@ -162,6 +156,12 @@ Template.messageBox.onRendered(function (this: MessageBoxTemplateInstance) {
 		const isBlockedOrBlocker = isBlocked || isBlocker;
 
 		const mustJoinWithCode = !subscription && room.joinCodeRequired;
+
+		const { chatMessagesInstance } = this.data;
+
+		chatMessagesInstance.quotedMessages.subscribe(() => {
+			this.replyMessageData.set(chatMessagesInstance.quotedMessages.get());
+		});
 
 		return this.state.set({
 			room: false,
