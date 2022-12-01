@@ -3,13 +3,13 @@
 # and commit this file to your remote git repository to share the goodness with others.
 
 tasks:
-  - name: Install NPM Version
-    command: nvm install v14.19.3
-  - name: Install meteor
-    command: curl https://install.meteor.com/?release=$( curl -so- https://raw.githubusercontent.com/RocketChat/Rocket.Chat/develop/apps/meteor/.meteor/release | cut -d@ -f2 ) | sh
   - name: Install Initial Things
     init: npm rebuild --verbose sharp && yarn
-    command: nvm use v14.19.3 && yarn run dev
+    command: nvm use v14.19.3
+  - name: Build the packages
+    init: yarn run build
+  - name: Start the server
+    command: yarn run dev
 
 github:
   prebuilds:
@@ -25,3 +25,6 @@ vscode:
   extensions:
     - esbenp.prettier-vscode
     - eslint
+
+image: 
+  file: .gitpod.Dockerfile
