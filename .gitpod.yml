@@ -9,7 +9,7 @@ tasks:
       yarn install &&
       yarn run build
     command: 
-      nvm run dev
+      yarn run dev
       
 github:
   prebuilds:
