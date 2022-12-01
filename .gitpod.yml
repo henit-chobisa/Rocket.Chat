@@ -5,8 +5,8 @@
 tasks:
   - name: Build
     before: nvm install v14.19.3 && curl https://install.meteor.com/?release=2.7.3 | sh
-    init: 
-      yarn install
+    init: |
+      yarn install &&
       yarn run build
     command: 
       nvm run dev
