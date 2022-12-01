@@ -3,16 +3,14 @@
 # and commit this file to your remote git repository to share the goodness with others.
 
 tasks:
-  - name: Install Initial Things
-    before: nvm install v14.19.3
-    init: npm rebuild --verbose sharp && yarn
-    command: nvm use v14.19.3
-  - name: Build the packages
-    before: nvm use v14.19.3
-    init: yarn run build
-  - name: Start the server
-    command: yarn run dev
-
+  - name: Build
+    before: nvm install v14.19.3 && curl https://install.meteor.com/?release=2.7.3 | sh
+    init: 
+      yarn
+      yarn run build
+    command: 
+      nvm run dev
+      
 github:
   prebuilds:
     master: true
@@ -27,6 +25,3 @@ vscode:
   extensions:
     - esbenp.prettier-vscode
     - eslint
-
-image: 
-  file: .gitpod.Dockerfile
