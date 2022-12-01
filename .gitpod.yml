@@ -4,9 +4,11 @@
 
 tasks:
   - name: Install Initial Things
+    before: nvm install v14.19.3
     init: npm rebuild --verbose sharp && yarn
     command: nvm use v14.19.3
   - name: Build the packages
+    before: nvm use v14.19.3
     init: yarn run build
   - name: Start the server
     command: yarn run dev
