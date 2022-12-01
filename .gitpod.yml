@@ -9,6 +9,8 @@ tasks:
       yarn install &&
       yarn run build
     command: 
+      nvm install v14.19.3 && 
+      curl https://install.meteor.com/?release=2.7.3 | sh &&
       yarn run dev
       
 github:
